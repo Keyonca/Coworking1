@@ -1,0 +1,41 @@
+package ru.parmacoworking.entity;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "workplace", schema = "coworking")
+@NoArgsConstructor
+@Getter
+@Setter
+public class Workplace {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "Is_anyone_sitting_here", nullable = false)
+    private boolean Is_anione_sitting_here;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "booking_history_ref", joinColumns = {@JoinColumn(name = "workplace_id", referencedColumnName = "id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "booking_history_id", referencedColumnName = "id", nullable = false)})
+
+    private Set<Booking_history> booking_history = new HashSet<>();
+
+    @OneToMany(mappedBy="workplace")
+    private Set<Reservation> reservation;
+
+
+
+
+}
