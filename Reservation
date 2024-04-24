@@ -1,0 +1,30 @@
+package ru.parmacoworking.entity;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "reservation", schema = "coworking")
+@NoArgsConstructor
+@Getter
+@Setter
+public class Reservation {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="workplace_id", nullable=false)
+    private Workplace workplace;
+
+
+}
