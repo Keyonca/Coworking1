@@ -1,0 +1,33 @@
+package ru.parmacoworking.entity;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "user_job_title_ref", schema = "coworking")
+@NoArgsConstructor
+@Getter
+@Setter
+public class User_job_title_ref {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "job_title_id", nullable = false)
+    Job_title job_title;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    User user;
+
+    @Column(name = "is_actual", nullable = false)
+    private boolean is_actual;
+
+}
