@@ -1,0 +1,31 @@
+package ru.parmacoworking.entity;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "user_type", schema = "coworking")
+@NoArgsConstructor
+@Getter
+@Setter
+public class User_type {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @ManyToMany(mappedBy = "user_type", fetch = FetchType.LAZY)
+    private Set<User> user = new HashSet<>();
+
+
+
+}
