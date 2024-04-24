@@ -1,0 +1,27 @@
+package ru.parmacoworking.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "job_title", schema = "coworking")
+@NoArgsConstructor
+@Getter
+@Setter
+public class Job_title {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+
+}
