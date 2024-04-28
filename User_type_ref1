@@ -1,0 +1,32 @@
+package ru.parmacoworking.entity;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user_type_ref", schema = "coworking")
+@NoArgsConstructor
+@Getter
+@Setter
+public class User_type_ref {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
+
+    @ManyToOne
+    @JoinColumn(name = "user_type_id")
+    User_type user_type;
+
+
+
+}
